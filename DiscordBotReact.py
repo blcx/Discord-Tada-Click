@@ -5,6 +5,7 @@ def click(x,y):
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
 
+
 def tada():
     if pyautogui.locateOnScreen('tada.png',grayscale=True, confidence=0.9) != None:
 
@@ -15,9 +16,21 @@ def tada():
         pyautogui.click()
     time.sleep(2)
 
+
+def clickicon():
+    image = pyautogui.locateOnScreen('tada.png', grayscale=True, confidence=0.9)
+    if image != None:
+        x, y = pyautogui.center(image)
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
+
+
+
+
 Run_Times = 0
 while keyboard.is_pressed('q') != True:
-    tada()
+    clickicon()
+    time.sleep(1)
     Run_Times = Run_Times + 1
     print("Run Times" + str(Run_Times))
 
